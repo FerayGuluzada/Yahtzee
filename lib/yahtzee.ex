@@ -12,7 +12,12 @@ defmodule Yahtzee do
       :world
 
   """
-  def hello do
-    :world
+  defmodule Yahtzee do
+    def score_lower(dice) do
+
+      end
+    end
+
+
   end
-end
+

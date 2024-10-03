@@ -1,10 +1,10 @@
 defmodule Yahtzee do
-  def score_lower(dice) when is_list(dice) do
-    # Check if all numbers are positive
-    if Enum.all?(dice, &(&1 > 0)) do
-      counts = count_faces(dice)
+  def score_lower(dice) do
 
-      # Check for "Three of a kind"
+    # Count occurrences of each die face
+    counts = count_faces(dice)
+    
+      #THREE OF A KIND
       case Enum.find(counts, fn {_face, count} -> count >= 3 end) do
         {_face, _count} ->
           # Sum of faces for score
@@ -14,9 +14,6 @@ defmodule Yahtzee do
         _ ->
           %{:"Three of a kind" => 0}
       end
-    else
-      %{:"Three of a kind" => 0}  # Return 0 if any dice are not positive
-    end
   end
 
   defp count_faces(dice) do

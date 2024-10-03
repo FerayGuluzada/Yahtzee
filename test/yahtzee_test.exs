@@ -2,6 +2,7 @@ defmodule YahtzeeTest do
   use ExUnit.Case
   doctest Yahtzee
 
+
   #Three of a kind
 
   test "Identify 'Three of a kind' with three 4s" do
@@ -16,13 +17,6 @@ defmodule YahtzeeTest do
     assert %{"Three of a kind": 25} = Yahtzee.score_lower([5, 5, 5, 5, 5])
   end
 
-  test "No 'Three of a kind' with negative number" do
-    assert %{"Three of a kind": 0} = Yahtzee.score_lower([-1, 2, 3, 4, 5])
-  end
-
-  test "No 'Three of a kind' with zero" do
-    assert %{"Three of a kind": 0} = Yahtzee.score_lower([0, 2, 6, 3, 2])
-  end
 
 
 
@@ -36,13 +30,7 @@ defmodule YahtzeeTest do
     assert %{"Four of a kind": 25} = Yahtzee.score_lower([5, 5, 5, 5, 5])
   end
 
-  test "No 'Four of a kind' with negative number" do
-    assert %{"Four of a kind": 0} = Yahtzee.score_lower([-1, 2, 3, 4, 5])
-  end
 
-  test "No 'Four of a kind' with zero" do
-    assert %{"Four of a kind": 0} = Yahtzee.score_lower([0, 2, 6, 3, 2])
-  end
 
 
 

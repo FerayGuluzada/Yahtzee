@@ -28,7 +28,6 @@ defmodule YahtzeeTest do
 
 
   #Four of a kind
-
   test "Identify 'Four of a kind' with every face" do
     assert %{"Four of a kind": 24} = Yahtzee.score_lower([4, 5, 5, 5, 5])
   end

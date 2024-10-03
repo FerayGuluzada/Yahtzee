@@ -17,6 +17,13 @@ defmodule YahtzeeTest do
     assert %{"Three of a kind": 25} = Yahtzee.score_lower([5, 5, 5, 5, 5])
   end
 
+  test "Identify 'Three of a kind' with no same faces" do
+    assert %{"Three of a kind": 0} = Yahtzee.score_lower([1, 2, 3, 4, 5])
+  end
+
+  test "Identify 'Three of a kind' with less than 3 same faces" do
+    assert %{"Three of a kind": 0} = Yahtzee.score_lower([5, 5, 1, 2, 3])
+  end
 
 
 
@@ -29,6 +36,16 @@ defmodule YahtzeeTest do
   test "Identify 'Four of a kind' with five 5s" do
     assert %{"Four of a kind": 25} = Yahtzee.score_lower([5, 5, 5, 5, 5])
   end
+
+  test "Identify 'Four of a kind' with no same faces" do
+    assert %{"Four of a kind": 0} = Yahtzee.score_lower([1, 2, 3, 4, 5])
+  end
+
+  test "Identify 'Four of a kind' with less than 3 same faces" do
+    assert %{"Four of a kind": 0} = Yahtzee.score_lower([5, 5, 1, 2, 3])
+  end
+
+
 
 
 

@@ -56,5 +56,22 @@ defmodule Yahtzee do
     end
   end
 
+  # defp calculate_small_straight(dice) do
+  #   unique_dice = Enum.uniq(dice)
+
+  #   # Define the valid small straights as sets
+  #   valid_straights = [
+  #     MapSet.new([1, 2, 3, 4]),
+  #     MapSet.new([2, 3, 4, 5]),
+  #     MapSet.new([3, 4, 5, 6])
+  #   ]
+
+  #   # Check if the unique dice match any of the valid small straights
+  #   if Enum.any?(valid_straights, &(&1 |> MapSet.subset?(MapSet.new(unique_dice)))) do
+  #     30  # Return 30 points for a small straight
+  #   else
+  #     0
+  #   end
+  # end
 
 end

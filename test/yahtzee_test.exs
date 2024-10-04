@@ -54,8 +54,8 @@ defmodule YahtzeeTest do
   test "Identify 'Small Straight'" do
     assert %{"Small Straight": 30} = Yahtzee.score_lower([2, 3, 2, 5, 4])
     assert %{"Small Straight": 30} = Yahtzee.score_lower([2, 3, 3, 4, 5])
-    assert %{"Small Straight": 40} = Yahtzee.score_lower([1, 2, 3, 4, 5]) # Make sure Large Straight has the priority
-    assert %{"Small Straight": 15} = Yahtzee.score_lower([2, 2, 2, 4, 5]) # Make sure others work
+    assert %{"Large Straight": 40} = Yahtzee.score_lower([1, 2, 3, 4, 5]) # Make sure Large Straight has the priority
+    assert %{"Three of a kind": 15} = Yahtzee.score_lower([2, 2, 2, 4, 5]) # Make sure others work
     assert %{"Small Straight": 0} = Yahtzee.score_lower([1, 2, 2, 4, 5])  # No small straight, or anything else
 
   end

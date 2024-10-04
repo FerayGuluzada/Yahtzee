@@ -44,11 +44,15 @@ defmodule Yahtzee do
   defp calculate_large_straight(dice) do
     unique_dice = Enum.uniq(dice)
 
-    # Check for the two valid large straights
-    if Enum.sort(unique_dice) == [1, 2, 3, 4, 5] or Enum.sort(unique_dice) == [2, 3, 4, 5, 6] do
+    # Define the valid large straights as sets
+    valid_straights = [MapSet.new([1, 2, 3, 4, 5]), MapSet.new([2, 3, 4, 5, 6])]
+
+    # Check if the unique dice match any of the valid straights
+    if Enum.any?(valid_straights, &(&1 == MapSet.new(unique_dice))) do
       40
     else
       0
     end
   end
+
 end

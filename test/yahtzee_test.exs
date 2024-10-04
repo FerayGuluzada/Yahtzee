@@ -36,9 +36,15 @@ defmodule YahtzeeTest do
 
   test "Identify 'Large Straight'" do
     assert %{"Large Straight": 40} = Yahtzee.score_lower([2, 3, 4, 5, 6])
+    assert %{"Large Straight": 40} = Yahtzee.score_lower([2, 3, 5, 4, 6]) # Consecutive numbers in the wrong order
     assert %{"Large Straight": 0} = Yahtzee.score_lower([1, 3, 4, 5, 6]) # No Large Straight
     assert %{"Large Straight": 0} = Yahtzee.score_lower([2, 2, 2, 5, 6]) # Make sure others are working
   end
+
+  # test "Identify 'Small Straight'" do
+  #   assert %{"Small Straight": 30} = Yahtzee.score_lower([2, 3, 2, 5, 4])
+  #   assert %{"Small Straight": 30} = Yahtzee.score_lower([2, 3, 3, 4, 5])
+  # end
 
 
 

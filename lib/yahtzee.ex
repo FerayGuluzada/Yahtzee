@@ -1,7 +1,7 @@
 defmodule Yahtzee do
   def score_lower(dice) do
     score = %{
-      # "Large Straight": calculate_large_straight(dice),
+      "Large Straight": calculate_large_straight(dice),
       "Full house": calculate_full_house_score(dice),
       "Three of a kind": calculate_three_of_a_kind_score(dice),
       "Four of a kind": calculate_four_of_a_kind_score(dice)
@@ -41,14 +41,14 @@ defmodule Yahtzee do
     if has_three and has_two, do: 25, else: 0
   end
 
-  # defp calculate_large_straight(dice) do
-  #   unique_dice = Enum.uniq(dice)
+  defp calculate_large_straight(dice) do
+    unique_dice = Enum.uniq(dice)
 
-  #   # Check for the two valid large straights
-  #   if Enum.sort(unique_dice) == [1, 2, 3, 4, 5] or Enum.sort(unique_dice) == [2, 3, 4, 5, 6] do
-  #     40
-  #   else
-  #     0
-  #   end
-  # end
+    # Check for the two valid large straights
+    if Enum.sort(unique_dice) == [1, 2, 3, 4, 5] or Enum.sort(unique_dice) == [2, 3, 4, 5, 6] do
+      40
+    else
+      0
+    end
+  end
 end

@@ -5,9 +5,10 @@ defmodule Yahtzee do
       "Large Straight": calculate_large_straight(dice),
       "Full house": calculate_full_house_score(dice),
       "Three of a kind": calculate_three_of_a_kind_score(dice),
-      "Four of a kind": calculate_four_of_a_kind_score(dice)
+      "Four of a kind": calculate_four_of_a_kind_score(dice),
+      "Yahtzee": calculate_yahtzee(dice)
     }
-    # Return the final score directly
+
     score
   end
 
@@ -68,10 +69,20 @@ defmodule Yahtzee do
 
     # Check if the unique dice match any of the valid small straights
     if Enum.any?(valid_straights, &(&1 |> MapSet.subset?(MapSet.new(unique_dice)))) do
-      30  # Return 30 points for a small straight
+      30  
     else
       0
     end
   end
 
+  defp calculate_yahtzee(dice) do
+    counts = Enum.frequencies(dice)
+
+    # Check if all dice have the same value
+    if Map.values(counts) |> Enum.member?(5) do
+      50
+    else
+      0
+    end
+  end
 end

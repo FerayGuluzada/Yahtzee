@@ -1,7 +1,7 @@
 defmodule Yahtzee do
   def score_lower(dice) do
     score = %{
-      "Large Straight": calculate_large_straight(dice),
+      # "Large Straight": calculate_large_straight(dice),
       "Full house": calculate_full_house_score(dice),
       "Three of a kind": calculate_three_of_a_kind_score(dice),
       "Four of a kind": calculate_four_of_a_kind_score(dice)

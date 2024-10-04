@@ -1,6 +1,7 @@
 defmodule Yahtzee do
   def score_lower(dice) do
     score = %{
+      "Chance": calculate_chance(dice),
       "Small Straight": calculate_small_straight(dice),
       "Large Straight": calculate_large_straight(dice),
       "Full house": calculate_full_house_score(dice),
@@ -69,7 +70,7 @@ defmodule Yahtzee do
 
     # Check if the unique dice match any of the valid small straights
     if Enum.any?(valid_straights, &(&1 |> MapSet.subset?(MapSet.new(unique_dice)))) do
-      30  
+      30
     else
       0
     end
@@ -84,5 +85,19 @@ defmodule Yahtzee do
     else
       0
     end
+  end
+
+  defp calculate_chance(dice) do
+    # Check for matches
+    has_match =
+      calculate_three_of_a_kind_score(dice) > 0 or
+      calculate_four_of_a_kind_score(dice) > 0 or
+      calculate_full_house_score(dice) > 0 or
+      calculate_large_straight(dice) > 0 or
+      calculate_small_straight(dice) > 0 or
+      calculate_yahtzee(dice) > 0
+
+    # If there are no matches, return 10; otherwise return 0
+    if has_match, do: 0, else: 10
   end
 end

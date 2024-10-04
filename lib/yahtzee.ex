@@ -5,7 +5,7 @@ defmodule Yahtzee do
 
     # THREE OF A KIND
     three_of_a_kind_score =
-      case Enum.find(counts, fn {_face, count} -> count >= 3 end) do
+      case Enum.find(counts, fn {_face, count} -> count == 3 end) do
         {_face, _count} ->
           # Sum of faces for score
           Enum.sum(dice)
@@ -16,7 +16,7 @@ defmodule Yahtzee do
 
     # FOUR OF A KIND
     four_of_a_kind_score =
-      case Enum.find(counts, fn {_face, count} -> count >= 4 end) do
+      case Enum.find(counts, fn {_face, count} -> count == 4 end) do
         {_face, _count} ->
           # Sum of faces for score
           Enum.sum(dice)

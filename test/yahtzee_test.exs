@@ -56,7 +56,6 @@ defmodule YahtzeeTest do
     assert %{"Small Straight": 30} = Yahtzee.score_lower([2, 3, 3, 4, 5])
     assert %{"Large Straight": 40} = Yahtzee.score_lower([1, 2, 3, 4, 5]) # Make sure Large Straight has the priority
     assert %{"Three of a kind": 15} = Yahtzee.score_lower([2, 2, 2, 4, 5]) # Make sure others work
-    assert %{"Small Straight": 0} = Yahtzee.score_lower([1, 2, 2, 4, 5])  # No small straight, or anything else
 
   end
 
@@ -66,6 +65,13 @@ defmodule YahtzeeTest do
     assert %{Yahtzee: 0} = Yahtzee.score_lower([2, 2, 2, 2, 1]) #No Yahtzee
     assert %{Yahtzee: 0} = Yahtzee.score_lower([1, 2, 3, 4, 5]) #No Yahtzee
     assert %{"Large Straight": 40} = Yahtzee.score_lower([2, 3, 4, 5, 1]) #Make sure others are working
+  end
+
+
+  test "Identify any other combination" do
+    assert %{Chance: 10} = Yahtzee.score_lower([1, 1, 2, 2, 4])
+    assert %{Chance: 0} = Yahtzee.score_lower([1, 1, 2, 2, 2])
+    assert %{Chance: 0} = Yahtzee.score_lower([1, 2, 3, 4, 5])
   end
 
 

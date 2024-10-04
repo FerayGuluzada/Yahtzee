@@ -61,6 +61,17 @@ defmodule YahtzeeTest do
   end
 
 
+  test "Identify 'Yahtzee'" do
+    assert %{Yahtzee: 50} = Yahtzee.score_lower([2, 2, 2, 2, 2])
+    assert %{Yahtzee: 0} = Yahtzee.score_lower([2, 2, 2, 2, 1]) #No Yahtzee
+    assert %{Yahtzee: 0} = Yahtzee.score_lower([1, 2, 3, 4, 5]) #No Yahtzee
+    assert %{"Large Straight": 40} = Yahtzee.score_lower([2, 3, 4, 5, 1]) #Make sure others are working
+  end
+
+
+
+
+
 
 
 

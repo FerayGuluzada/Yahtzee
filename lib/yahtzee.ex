@@ -100,4 +100,7 @@ defmodule Yahtzee do
     # If there are no matches, return 10; otherwise return 0
     if has_match, do: 0, else: 10
   end
+
+
+
 end

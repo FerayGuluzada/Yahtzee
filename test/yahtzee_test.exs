@@ -75,14 +75,26 @@ defmodule YahtzeeTest do
   end
 
 
+  test "Total score with two rounds, using different categories" do
+    assert Yahtzee.total_score([[2, 3, 4, 4, 4], [6, 6, 6, 5, 5]]) == 42
+  end
 
 
+  test "Total score with three rounds, using different categories" do
+    assert Yahtzee.total_score([[1, 2, 3, 4, 5], [2, 2, 2, 3, 4], [4, 4, 4, 4, 4]]) == 40 + 13 + 50
+  end
 
+  test "Total score with Large Straight first, and Small Straight second" do
+    assert Yahtzee.total_score([[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]) == 40 + 30
+  end
 
+  test "Total score with Full House first, and Three of a Kind second" do
+    assert Yahtzee.total_score([[2, 2, 3, 3, 3], [3, 3, 2, 2, 2]]) == 25 + 12
+  end
 
-
-
-
+  test "Total score with Chance and Four of a Kind" do
+    assert Yahtzee.total_score([[1, 1, 2, 2, 4], [3, 3, 3, 3, 2]]) == 10 + 14
+  end
 
 
 
